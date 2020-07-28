@@ -1,8 +1,12 @@
 function toggleYes() {
     $('#yes').collapse('toggle')
-
+    
     $('#yes').on('shown.bs.collapse', function () {
         $('#no').collapse('hide')
+        $('#attending-yes').attr('checked', true)
+    })
+    $('#yes').on('hidden.bs.collapse', function () {
+        $('#attending-yes').attr('checked', false)
     })
 }
 
@@ -11,6 +15,10 @@ function toggleNo() {
 
     $('#no').on('shown.bs.collapse', function () {
         $('#yes').collapse('hide')
+        $('#attending-no').attr('checked', true)
+    })
+    $('#no').on('hidden.bs.collapse', function () {
+        $('#attending-no').attr('checked', false)
     })
 }
 

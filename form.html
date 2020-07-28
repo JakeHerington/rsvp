@@ -31,15 +31,16 @@
         <div class='row'>
             <div class='col-1'></div>
             <div class='col-10 mt-3'>
-                <form class='p-4 mb-3 rounded-lg'>
+                <form class='p-4 mb-3 rounded-lg' action='process_form.php' method='post'>
                     <div class="form-group row col">
                         <label class='col-sm-4 col-form-label text-white' for='attending'>Attending?</label>
-                        <div class='col-sm-4'></div>
                         <div class='col-align-centre'>
-                            <button name='attending' type='button' class='btn active btn-outline-warning text-white p-3' onclick='toggleYes()'>Yes</button>
+                            <button name='attending' type='button' class='btn-lg bg-warning btn-outline-warning text-white p-3' onclick='toggleYes()'>Yes</button>
+                            <input type='checkbox' id='attending-yes' name='attending' value='yes' class='d-none'>
                         </div>
                         <div class='col'>
-                            <button name='attending' type='button' class='btn active btn-outline-warning text-white p-3' onclick='toggleNo()'>No</button>
+                            <button name='attending' type='button' class='btn-lg bg-warning btn-outline-warning text-white p-3' onclick='toggleNo()'>No</button>
+                            <input type='checkbox' id='attending-no' name='attending' value='no' class='d-none'>
                         </div>
                     </div>
                     <div id='yes' class='collapse'> 
@@ -47,7 +48,7 @@
                             <label class='col-sm-4 col-form-label text-white' for='totalAttending'>How many will be attending?</label><br />
                             <div class='col-sm-6'></div>
                             <div class='col-sm-2 float-right'>
-                                <select class='form-control' id='totalAttending' onchange="show(value);">
+                                <select class='form-control' id='totalAttending' name='total-attending' onchange="show(value);">
                                     <option value='1'>1</option>
                                     <option value='2'>2</option>
                                     <option value='3'>3</option>
@@ -59,11 +60,11 @@
                                 <label class='text-white col-form-label'>Attendee names:</label><br />
                             </div>
                             <div class='col-sm-8'>
-                                <input type='text' class='form-control' id='attendeeOneFName' placeholder='First Name'>
-                                <input type='text' class='form-control mt-1' id='attendeeOneLName' placeholder='Last Name'><br />
+                                <input type='text' class='form-control' id='attendeeOneFName' name='attendeeOneFName' placeholder='First Name'>
+                                <input type='text' class='form-control mt-1' id='attendeeOneLName' name='attendeeOneLName' placeholder='Last Name'><br />
                                 <p class='text-white'>Dietary Restrictions:</p>
                                 <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a1-none' name='a-1none' value='none'>
+                                    <input type='checkbox' id='a1-none' name='a1-none' value='none'>
                                     <label class='col-form-label text-white' for='a1-none'>None</label>
                                 </div>
                                 <div class='col-sm-3 float-right mt-n3'>
@@ -79,8 +80,8 @@
                                     <label class='col-form-label text-white' for='a1-gf'>Gluten Free</label>
                                 </div>
                                 <div class='collapse' id='a2'>
-                                    <input type='text' class='form-control' id='attendeeTwoFName' placeholder='First Name'>
-                                    <input type='text' class='form-control mt-1' id='attendeeTwoLName' placeholder='Last Name'><br />
+                                    <input type='text' class='form-control' id='attendeeTwoFName' name='attendeeTwoFName' placeholder='First Name'>
+                                    <input type='text' class='form-control mt-1' id='attendeeTwoLName' name='attendeeTwoLName' placeholder='Last Name'><br />
                                     <p class='text-white'>Dietary Restrictions:</p>
                                     <div class='col-sm-3 float-right mt-n3'>
                                         <input type='checkbox' id='a2-none' name='a2-none' value='none'>
@@ -100,8 +101,8 @@
                                     </div>
                                 </div>
                                 <div class='collapse' id='a3'>
-                                    <input type='text' class='form-control' id='attendeeThreeFName' placeholder='First Name'>
-                                    <input type='text' class='form-control mt-1' id='attendeeThreeLName' placeholder='Last Name'><br />
+                                    <input type='text' class='form-control' id='attendeeThreeFName' name='attendeeThreeFName' placeholder='First Name'>
+                                    <input type='text' class='form-control mt-1' id='attendeeThreeLName' name='attendeeThreeLName' placeholder='Last Name'><br />
                                     <p class='text-white'>Dietary Restrictions:</p>
                                     <div class='col-sm-3 float-right mt-n3'>
                                         <input type='checkbox' id='a3-none' name='a3-none' value='none'>
