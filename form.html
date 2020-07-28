@@ -10,6 +10,10 @@
         background: black !important;
     }
     </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src='bootstrap-4.3.1-dist/js/bootstrap.js'></script>
+    <script src="bootstrap-4.3.1-dist/js/custom.js"></script>
 </head>
 <body>
 
@@ -27,34 +31,26 @@
         <div class='row'>
             <div class='col-1'></div>
             <div class='col-10 mt-3'>
-                <form class='p-4 mb-3 border border-warning rounded-lg'>
-                    <div class="form-group row">
+                <form class='p-4 mb-3 rounded-lg'>
+                    <div class="form-group row col">
                         <label class='col-sm-4 col-form-label text-white' for='attending'>Attending?</label>
-                        <div class='col-sm-6'></div>
-                        <div class='col-sm-2 float-right'>
-                            <select class='form-control' id='attending'>
-                                <option value='yes' onclick='showYes()'>Yes</option>
-                                <option value='no' onclick='showNo()'>No</option>
-                            </select><br />
+                        <div class='col-sm-4'></div>
+                        <div class='col-align-centre'>
+                            <button name='attending' type='button' class='btn active btn-outline-warning text-white p-3' onclick='toggleYes()'>Yes</button>
+                        </div>
+                        <div class='col'>
+                            <button name='attending' type='button' class='btn active btn-outline-warning text-white p-3' onclick='toggleNo()'>No</button>
                         </div>
                     </div>
-                            <!-- 
-                                - total attending
-                                    - +1 name
-                                - dietary requirements
-                                - accomodation package
-                                
-                                - message textbox
-                            -->
-                    <div id='yes'> 
+                    <div id='yes' class='collapse'> 
                         <div class='form-group row'>
                             <label class='col-sm-4 col-form-label text-white' for='totalAttending'>How many will be attending?</label><br />
                             <div class='col-sm-6'></div>
                             <div class='col-sm-2 float-right'>
-                                <select class='form-control' id='totalAttending'>
-                                    <option value='1' onclick='showOne()'>1</option>
-                                    <option value='2' onclick='showOne()'>2</option>
-                                    <option value='3' onclick='showOne()'>3</option>
+                                <select class='form-control' id='totalAttending' onchange="show(value);">
+                                    <option value='1'>1</option>
+                                    <option value='2'>2</option>
+                                    <option value='3'>3</option>
                                 </select><br />
                             </div>
                         </div>
@@ -67,73 +63,75 @@
                                 <input type='text' class='form-control mt-1' id='attendeeOneLName' placeholder='Last Name'><br />
                                 <p class='text-white'>Dietary Restrictions:</p>
                                 <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a1none' name='a1none' value='none'>
-                                    <label class='col-form-label text-white' for='a1none'>None</label>
+                                    <input type='checkbox' id='a1-none' name='a-1none' value='none'>
+                                    <label class='col-form-label text-white' for='a1-none'>None</label>
                                 </div>
                                 <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a1veg' name='a1veg' value='vegetarian'>
-                                    <label class='col-form-label text-white' for='a1veg'>Vegetarian</label>
+                                    <input type='checkbox' id='a1-veg' name='a1-veg' value='vegetarian'>
+                                    <label class='col-form-label text-white' for='a1-veg'>Vegetarian</label>
                                 </div>
                                 <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a1vegan' name='a1vegan' value='vegan'>
-                                    <label class='col-form-label text-white' for='a1vegan'>Vegan</label>
+                                    <input type='checkbox' id='a1-vegan' name='a1-vegan' value='vegan'>
+                                    <label class='col-form-label text-white' for='a1-vegan'>Vegan</label>
                                 </div>
                                 <div class='col-sm-3 float-right mt-n3 mb-4'>
-                                    <input type='checkbox' id='a1gf' name='a1gf' value='gluten free'>
-                                    <label class='col-form-label text-white' for='a1gf'>Gluten Free</label>
+                                    <input type='checkbox' id='a1-gf' name='a1-gf' value='gluten free'>
+                                    <label class='col-form-label text-white' for='a1-gf'>Gluten Free</label>
                                 </div>
-                                <input type='text' class='form-control' id='attendeeTwoFName' placeholder='First Name'>
-                                <input type='text' class='form-control mt-1' id='attendeeTwoLName' placeholder='Last Name'><br />
-                                <p class='text-white'>Dietary Restrictions:</p>
-                                <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a2none' name='a2none' value='none'>
-                                    <label class='col-form-label text-white' for='a2none'>None</label>
+                                <div class='collapse' id='a2'>
+                                    <input type='text' class='form-control' id='attendeeTwoFName' placeholder='First Name'>
+                                    <input type='text' class='form-control mt-1' id='attendeeTwoLName' placeholder='Last Name'><br />
+                                    <p class='text-white'>Dietary Restrictions:</p>
+                                    <div class='col-sm-3 float-right mt-n3'>
+                                        <input type='checkbox' id='a2-none' name='a2-none' value='none'>
+                                        <label class='col-form-label text-white' for='a2-none'>None</label>
+                                    </div>
+                                    <div class='col-sm-3 float-right mt-n3'>
+                                        <input type='checkbox' id='a2-veg' name='a2-veg' value='vegetarian'>
+                                        <label class='col-form-label text-white' for='a2-veg'>Vegetarian</label>
+                                    </div>
+                                    <div class='col-sm-3 float-right mt-n3'>
+                                        <input type='checkbox' id='a2-vegan' name='a2-vegan' value='vegan'>
+                                        <label class='col-form-label text-white' for='a2-vegan'>Vegan</label>
+                                    </div>
+                                    <div class='col-sm-3 float-right mt-n3 mb-4'>
+                                        <input type='checkbox' id='a2-gf' name='a2-gf' value='gluten free'>
+                                        <label class='col-form-label text-white' for='a2-gf'>Gluten Free</label>
+                                    </div>
                                 </div>
-                                <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a2veg' name='a2veg' value='vegetarian'>
-                                    <label class='col-form-label text-white' for='a2veg'>Vegetarian</label>
-                                </div>
-                                <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a2vegan' name='a2vegan' value='vegan'>
-                                    <label class='col-form-label text-white' for='a2vegan'>Vegan</label>
-                                </div>
-                                <div class='col-sm-3 float-right mt-n3 mb-4'>
-                                    <input type='checkbox' id='a2gf' name='a2gf' value='gluten free'>
-                                    <label class='col-form-label text-white' for='a2gf'>Gluten Free</label>
-                                </div>
-                                <input type='text' class='form-control' id='attendeeThreeFName' placeholder='First Name'>
-                                <input type='text' class='form-control mt-1' id='attendeeThreeLName' placeholder='Last Name'><br />
-                                <p class='text-white'>Dietary Restrictions:</p>
-                                <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a3none' name='a3none' value='none'>
-                                    <label class='col-form-label text-white' for='a3none'>None</label>
-                                </div>
-                                <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a3veg' name='a3veg' value='vegetarian'>
-                                    <label class='col-form-label text-white' for='a3veg'>Vegetarian</label>
-                                </div>
-                                <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a3vegan' name='a3vegan' value='vegan'>
-                                    <label class='col-form-label text-white' for='a3vegan'>Vegan</label>
-                                </div>
-                                <div class='col-sm-3 float-right mt-n3 mb-4'>
-                                    <input type='checkbox' id='a3gf' name='a3gf' value='gluten free'>
-                                    <label class='col-form-label text-white' for='a3gf'>Gluten Free</label>
+                                <div class='collapse' id='a3'>
+                                    <input type='text' class='form-control' id='attendeeThreeFName' placeholder='First Name'>
+                                    <input type='text' class='form-control mt-1' id='attendeeThreeLName' placeholder='Last Name'><br />
+                                    <p class='text-white'>Dietary Restrictions:</p>
+                                    <div class='col-sm-3 float-right mt-n3'>
+                                        <input type='checkbox' id='a3-none' name='a3-none' value='none'>
+                                        <label class='col-form-label text-white' for='a3-none'>None</label>
+                                    </div>
+                                    <div class='col-sm-3 float-right mt-n3'>
+                                        <input type='checkbox' id='a3-veg' name='a3-veg' value='vegetarian'>
+                                        <label class='col-form-label text-white' for='a3-veg'>Vegetarian</label>
+                                    </div>
+                                    <div class='col-sm-3 float-right mt-n3'>
+                                        <input type='checkbox' id='a3-vegan' name='a3-vegan' value='vegan'>
+                                        <label class='col-form-label text-white' for='a3-vegan'>Vegan</label>
+                                    </div>
+                                    <div class='col-sm-3 float-right mt-n3 mb-4'>
+                                        <input type='checkbox' id='a3-gf' name='a3-gf' value='gluten free'>
+                                        <label class='col-form-label text-white' for='a3-gf'>Gluten Free</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class='col-12'>
-                            <p class='text-white'>If enough people are interested, we may be able to secure a package deal
-                            for cheaper accomodation at the Clarendon Hotel.<br><br></p> 
+                            <p class='card card-body bg-dark border-warning text-white'>If enough people are interested, we may be able to secure a package deal
+                            for cheaper accomodation at the Clarendon Hotel.<br></p> 
                         </div>
                         <div class='form-group row'>
-                            <div class='col-sm-12'>
-                                <div class='col-sm-9'>
-                                    <p class='text-white'>Please check this box if<br> you are interested.</p>
-                                </div>
-                                <div class='col-sm-2'>
-                                    <input type='checkbox' id='accomodation' name='accomodation' value='yes'>
-                                </div>
+                            <div class='col-auto mr-5'>
+                                <p class='text-white'>Please check this box if<br> you are interested.</p>
+                            </div>
+                            <div class='col-auto ml-5 mt-3'>
+                                <input type='checkbox' id='accomodation' name='accomodation' value='yes'>
                             </div>
                         </div>
                         <div class='form-group row'>
@@ -143,15 +141,15 @@
                             </div>
                         </div>
                     </div>
-                    <div id='no'>
+                    <div id='no' class='collapse'>
                         <div class='form-group row'>
                             <div class='col-sm-12'>
-                                <label class='col-form-label text-white' for='message'>Send us a message.</label><br />
-                                <textarea class='form-control' name='message' id='message' rows='5' placeholder='optional...'></textarea>
+                                <label class='col-form-label text-white' for='message-n'>Send us a message.</label><br />
+                                <textarea class='form-control' name='message-n' id='message-n' rows='5' placeholder='optional...'></textarea>
                             </div>
                         </div>
                     </div>
-                    <div class='form-group row'>
+                    <div class='form-group row mt-5'>
                         <div class='col-sm-12'>
                             <input class="btn btn-success btn-lg" type="submit" value="Submit">
                         </div>
@@ -161,9 +159,5 @@
             <div class='col-1'></div>
         </div>
     </div>
-
-    <script src='bootstrap-4.3.1-dist/js/bootstrap.js'></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 </body>
 </html>
