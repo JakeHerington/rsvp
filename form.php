@@ -27,7 +27,18 @@
         </div>
     </div>
     
+    <?php session_start();?>
+
     <div class='container'>
+        <div class='row mt-5'>
+            <div class='col-12'>
+                <div class='col-3'></div>
+                <div class='col-md-auto'>
+                    <h2 class='text-white'>Hello <?php echo $_SESSION['name']?></h2>
+                </div>
+                <div class='col-3'></div>
+            </div>
+        </div>
         <div class='row'>
             <div class='col-1'></div>
             <div class='col-10 mt-3'>
@@ -60,64 +71,64 @@
                                 <label class='text-white col-form-label'>Attendee names:</label><br />
                             </div>
                             <div class='col-sm-8'>
-                                <input type='text' class='form-control' id='attendeeOneFName' name='attendeeOneFName' placeholder='First Name'>
-                                <input type='text' class='form-control mt-1' id='attendeeOneLName' name='attendeeOneLName' placeholder='Last Name'><br />
+                                <input type='text' class='form-control' id='a1-fName' name='a1-fName' placeholder='First Name'>
+                                <input type='text' class='form-control mt-1' id='a1-lName' name='a1-lName' placeholder='Last Name'><br />
                                 <p class='text-white'>Dietary Restrictions:</p>
                                 <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a1-none' name='a1-none' value='none'>
+                                    <input type='radio' id='a1-none' name='a1-diet' value='none'>
                                     <label class='col-form-label text-white' for='a1-none'>None</label>
                                 </div>
                                 <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a1-veg' name='a1-veg' value='vegetarian'>
+                                    <input type='radio' id='a1-veg' name='a1-diet' value='vegetarian'>
                                     <label class='col-form-label text-white' for='a1-veg'>Vegetarian</label>
                                 </div>
                                 <div class='col-sm-3 float-right mt-n3'>
-                                    <input type='checkbox' id='a1-vegan' name='a1-vegan' value='vegan'>
+                                    <input type='radio' id='a1-vegan' name='a1-diet' value='vegan'>
                                     <label class='col-form-label text-white' for='a1-vegan'>Vegan</label>
                                 </div>
                                 <div class='col-sm-3 float-right mt-n3 mb-4'>
-                                    <input type='checkbox' id='a1-gf' name='a1-gf' value='gluten free'>
+                                    <input type='checkbox' id='a1-gf' name='a1-diet' value='yes'>
                                     <label class='col-form-label text-white' for='a1-gf'>Gluten Free</label>
                                 </div>
                                 <div class='collapse' id='a2'>
-                                    <input type='text' class='form-control' id='attendeeTwoFName' name='attendeeTwoFName' placeholder='First Name'>
-                                    <input type='text' class='form-control mt-1' id='attendeeTwoLName' name='attendeeTwoLName' placeholder='Last Name'><br />
+                                    <input type='text' class='form-control' id='a2-fName' name='a2-fName' placeholder='First Name'>
+                                    <input type='text' class='form-control mt-1' id='a2-lName' name='a2-lName' placeholder='Last Name'><br />
                                     <p class='text-white'>Dietary Restrictions:</p>
                                     <div class='col-sm-3 float-right mt-n3'>
-                                        <input type='checkbox' id='a2-none' name='a2-none' value='none'>
+                                        <input type='radio' id='a2-none' name='a2-diet' value='none'>
                                         <label class='col-form-label text-white' for='a2-none'>None</label>
                                     </div>
                                     <div class='col-sm-3 float-right mt-n3'>
-                                        <input type='checkbox' id='a2-veg' name='a2-veg' value='vegetarian'>
+                                        <input type='radio' id='a2-veg' name='a2-diet' value='vegetarian'>
                                         <label class='col-form-label text-white' for='a2-veg'>Vegetarian</label>
                                     </div>
                                     <div class='col-sm-3 float-right mt-n3'>
-                                        <input type='checkbox' id='a2-vegan' name='a2-vegan' value='vegan'>
+                                        <input type='radio' id='a2-vegan' name='a2-diet' value='vegan'>
                                         <label class='col-form-label text-white' for='a2-vegan'>Vegan</label>
                                     </div>
                                     <div class='col-sm-3 float-right mt-n3 mb-4'>
-                                        <input type='checkbox' id='a2-gf' name='a2-gf' value='gluten free'>
+                                        <input type='checkbox' id='a2-gf' name='a2-gf' value='yes'>
                                         <label class='col-form-label text-white' for='a2-gf'>Gluten Free</label>
                                     </div>
                                 </div>
                                 <div class='collapse' id='a3'>
-                                    <input type='text' class='form-control' id='attendeeThreeFName' name='attendeeThreeFName' placeholder='First Name'>
-                                    <input type='text' class='form-control mt-1' id='attendeeThreeLName' name='attendeeThreeLName' placeholder='Last Name'><br />
+                                    <input type='text' class='form-control' id='a3-fName' name='a3-fName' placeholder='First Name'>
+                                    <input type='text' class='form-control mt-1' id='a3-lName' name='a3-lName' placeholder='Last Name'><br />
                                     <p class='text-white'>Dietary Restrictions:</p>
                                     <div class='col-sm-3 float-right mt-n3'>
-                                        <input type='checkbox' id='a3-none' name='a3-none' value='none'>
+                                        <input type='radio' id='a3-none' name='a3-diet' value='none'>
                                         <label class='col-form-label text-white' for='a3-none'>None</label>
                                     </div>
                                     <div class='col-sm-3 float-right mt-n3'>
-                                        <input type='checkbox' id='a3-veg' name='a3-veg' value='vegetarian'>
+                                        <input type='radio' id='a3-veg' name='a3-diet' value='vegetarian'>
                                         <label class='col-form-label text-white' for='a3-veg'>Vegetarian</label>
                                     </div>
                                     <div class='col-sm-3 float-right mt-n3'>
-                                        <input type='checkbox' id='a3-vegan' name='a3-vegan' value='vegan'>
+                                        <input type='checkbox' id='a3-vegan' name='a3-diet' value='vegan'>
                                         <label class='col-form-label text-white' for='a3-vegan'>Vegan</label>
                                     </div>
                                     <div class='col-sm-3 float-right mt-n3 mb-4'>
-                                        <input type='checkbox' id='a3-gf' name='a3-gf' value='gluten free'>
+                                        <input type='checkbox' id='a3-gf' name='a3-gf' value='yes'>
                                         <label class='col-form-label text-white' for='a3-gf'>Gluten Free</label>
                                     </div>
                                 </div>
@@ -132,7 +143,7 @@
                                 <p class='text-white'>Please check this box if<br> you are interested.</p>
                             </div>
                             <div class='col-auto ml-5 mt-3'>
-                                <input type='checkbox' id='accomodation' name='accomodation' value='yes'>
+                                <input type='checkbox' id='accomodation' name='accom' value='yes'>
                             </div>
                         </div>
                         <div class='form-group row'>
