@@ -33,7 +33,7 @@
         <div class='row mt-5'>
             <div class='col-12'>
                 <div class='col-3'></div>
-                <div class='col-md-auto'>
+                <div class='col ml-5'>
                     <h2 class='text-white'>Hello <?php echo $_SESSION['name']?></h2>
                 </div>
                 <div class='col-3'></div>
@@ -42,7 +42,7 @@
         <div class='row'>
             <div class='col-1'></div>
             <div class='col-10 mt-3'>
-                <form class='p-4 mb-3 rounded-lg' action='process_form.php' method='post'>
+                <form id='form' class='p-4 mb-3 rounded-lg' action='process_form.php' method='post' onsubmit='return validate()'>
                     <div class="form-group row col">
                         <label class='col-sm-4 col-form-label text-white' for='attending'>Attending?</label>
                         <div class='col-align-centre'>

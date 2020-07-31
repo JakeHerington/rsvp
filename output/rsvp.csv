@@ -1,2 +1,10 @@
-Code,First Name,Last Name,Attending,Diet,Gluten Free?,Accomodation?,Message
-JJ-001,,,,,,,
+Code,First Name,Last Name,Attending,Diet,Gluten Free?,Accomodation?,Message,Invite Name/s
+JJ-001,,,no,,,,,
+JJ-001,sdkvnk,sdkvnk,yes,yes,no,yes,dskvnk
+JJ-001,,,yes,,no,no,,"Bri & Matt"
+JJ-001,,,yes,,no,no,,"Bri & Matt"
+JJ-001,,,yes,,no,no,,"Bri & Matt"
+JJ-001,,,yes,,no,no,,"Bri & Matt"
+JJ-001,,,yes,,no,no,,"Bri & Matt"
+JJ-001,sdsd,,yes,vegan,no,no,,"Bri & Matt"
+JJ-003,wewe,dfsdg,yes,vegetarian,no,no,,"Jye & Rhianna"

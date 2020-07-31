@@ -4,7 +4,7 @@
         session_start();
         $file = fopen('output/rsvp.csv', 'a');
         $attendees = array();
-        $attendee = array($_SESSION['code'], '', '', $_POST['attending'], '', '', '', ''); // insert code here
+        $attendee = array($_SESSION['code'], '', '', $_POST['attending'], '', '', '', '', $_SESSION['name']); // insert code here
         if($_POST['attending'] == 'yes') {
             switch($_POST['total-attending']) {
                 
